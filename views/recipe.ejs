@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  <style>
+  
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: "Poppins", sans-serif;
+}
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(45deg, #ffd195, #ffb283);
+}
+.rating-box {
+  position: relative;
+  background: #fff;
+  padding: 25px 50px 35px;
+  border-radius: 25px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+}
+.rating-box header {
+  font-size: 22px;
+  color: #dadada;
+  font-weight: 500;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.rating-box .stars {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+.stars i {
+  color: #e6e6e6;
+  font-size: 35px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.stars i.active {
+  color: #ff9c1a;
+}
+  </style>
+</head>
+
+<body>
+  <% if(recipe != null ) { %>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page"><%- recipe.name %></li>
+    </ol>
+  </nav>
+  <div class="row">
+    <div class="col-12 col-md-4">
+      <img src="/img/<%- recipe.image %>" class="img-fluid sticky-top" style="top: 20px;" alt="<%- recipe.name %>" loading="lazy">
+      <div class="row pt-4">
+        <div class="col-12">
+
+          <div class="rating-box">
+            <header>How was your experience?</header>
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-8">
+      <div class="row">
+        <div class="col-12">
+          <h1><%- recipe.name %></h1>
+        </div>
+        <div class="col-12 mb-4"><i class="bi bi-tag"></i> <%- recipe.category %></div>
+        <div class="col-12" style="white-space: pre-line;">
+          <h4>Cooking Instructions</h4>
+          <%- recipe.description %>
+        </div>
+      </div>
+      <div class="row pt-4">
+        <div class="col-12">
+          <h4>Ingredients</h4>
+          <ul class="list-group list-group-flush">
+            <% recipe.ingredients.forEach(function(ingredients, index){ %>
+            <li class="list-group-item"><%= ingredients %></li>
+            <% }) %>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <script>
+  // Select all elements with the "i" tag and store them in a NodeList called "stars"
+const stars = document.querySelectorAll(".stars i");
+
+// Loop through the "stars" NodeList
+stars.forEach((star, index1) => {
+  // Add an event listener that runs a function when the "click" event is triggered
+  star.addEventListener("click", () => {
+    // Loop through the "stars" NodeList Again
+    stars.forEach((star, index2) => {
+      // Add the "active" class to the clicked star and any stars with a lower index
+      // and remove the "active" class from any stars with a higher index
+      index1 >= index2 ? star.classList.add("active") : star.classList.remove("active");
+    });
+  });
+});
+  </script>
+  <% } else { %>
+  <p>No item found.</p>
+  <% } %>
+</body>
+
+</html>

@@ -1,0 +1,1 @@
+[DatabaseURL]=mongodb+srv://aaratikharel076:hqKTCO2BXg61XjVr@cluster0.dxqrftg.mongodb.net/

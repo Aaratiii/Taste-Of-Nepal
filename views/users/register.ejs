@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>User Registration</title>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</head>
+
+<body>
+  <section>
+    <div class="form-box">
+      <div class="form-value">
+        <form action="/register" method="POST" enctype="multipart/form-data">
+          <h2>User Registration Form</h2>
+          <div class="inputbox">
+            <input type="text" name="name" placeholder="Enter Name" required>
+          </div>
+          <div class="inputbox">
+            <input type="email" name="email" placeholder="Enter Email" required>
+          </div>
+          <div class="inputbox">
+            <input type="text" name="mno" placeholder="Enter Mobile" required>
+          </div>
+          <div class="inputbox">
+            <input type="file" name="image" required>
+          </div>
+          <div class="inputbox">
+            <input type="password" name="password" placeholder="Enter Password" required>
+          </div>
+          <div class="forget"> <label><input type="checkbox">Remember Me</label> <a href="#">Forgot
+              Password</a> </div> <button>Register</button>
+
+        </form>
+        <% if (typeof message !== 'undefined') { %>
+        <p style="color:green;"><%= message %></p>
+        <% } %>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

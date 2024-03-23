@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>
+    <%= typeof title !='undefined' ? title : 'Nepali recipe - made with node.js' %>
+  </title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css " />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+  <!-- index.js ko code yaa chha main bhitra ko ho -->
+  <main>
+    <marquee>Savor the symphony of Nepali spices in every bite. Our culinary sanctuary invites you to explore authentic recipes, where tradition meets innovation, creating a feast for your senses. Welcome to Nepali culinary bliss!
+ </marquee>
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-4 mb-4">
+      <div class="col-12 col-lg-6">
+        <img src="/img/hero.png" width="607" height="510" class="d-block mx-lg-auto img-fluid" loading="lazy" alt="cooking" />
+      </div>
+      <div class="col-12 col-lg-6">
+        <h1 class="display-5 fw-bold mb-3">
+          Indulge in a diverse collection of delectable recipe ideas. </h1>
+        <p class="lead">
+          Embark on a culinary exploration celebrating the diverse flavors of Nepali culture. Our extensive selection offers a rich tapestry of recipes, inviting you to savor the essence of traditional Nepali cuisine. Discover the warmth and authenticity of these delightful culinary creations. </p>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+
+          <a href="/explore-latest" class="btn btn-primary btn-dark btn-lg px-4 me-md-2">
+            Explore Latest
+          </a>
+
+          <a href="/explore-random" class="btn btn-outline-secondary btn-lg px-4 me-md-2">Show Random </a>
+
+
+        </div>
+      </div>
+    </div>
+    <!-- Categories Start-->
+    <div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4">
+      <% if(categories != '' ) { %>
+      <% categories.forEach (function(category, index ) {  %>
+      <a href="/categories/<%- category.name %> " class="col text-center categorylink">
+        <div class="category__img shadow">
+          <img src="img/<%- category.image %>" alt="<%- category.name %>" loading="lazy">
+        </div>
+        <div class="pt-1"> <%- category.name %></div>
+      </a>
+      <% })  %>
+      <%} %>
+      <a href="/categories " class="col text-center categoryLink">
+        <div class="categoryimg shadow">
+          <img src="img/view-all.jpg" alt="view-all categories" loading="lazy">
+        </div>
+
+        <div class="pt-1"> View All</div>
+      </a>
+
+    </div>
+    <!-- Categories end-->
+    <!-- Latest Start-->
+    <section class="pb-4 pt-4 ">
+      <div class="d-flex mb-2 align-items-center">
+        <h2>Latest Recipes </h2>
+        <a href="/explore-latest" class="ms-auto">View More</a>
+      </div>
+      <div class="row row-cols-2 row-cols-lg-5 g-2s g-lg-3">
+        <% if(food != '') { %>
+        <% food.latest.forEach(function(recipe, index){ %>
+        <a href=" /recipe/<%= recipe._id %>" class="col text-center category__Link ">
+          <div class="category__img category__img--large shadow">
+            <img src="img/<%= recipe.image %>" alt="<%= recipe.name %>" loading="lazy">
+          </div>
+          <div class="pt-1"> <%= recipe.name %> </div>
+        </a>
+        <% }) %>
+        <% } %>
+      </div>
+    </section>
+    <!-- Latest end-->
+    <!-- Newari Start-->
+    <section class="pb-4 pt-4 ">
+      <div class="d-flex mb-2 align-items-center">
+        <h2>Newari Recipes </h2>
+        <a href="/categories/Newari" class="ms-auto">View More</a>
+      </div>
+      <div class="row row-cols-2 row-cols-lg-5 g-2s g-lg-3">
+        <% if(food != '') { %>
+        <% food.newari.forEach(function(recipe, index){ %>
+        <a href=" /recipe/<%= recipe._id %>" class="col text-center category__Link ">
+          <div class="category__img category__img--large shadow">
+            <img src="img/<%= recipe.image %>" alt="<%= recipe.name %>" loading="lazy">
+          </div>
+          <div class="pt-1"> <%= recipe.name %> </div>
+        </a>
+        <% }) %>
+        <% } else{ %>
+        <p> No Items Found </p>
+        <% } %>
+      </div>
+    </section>
+    <!-- Newari end-->
+    <!-- Nepalese Start-->
+    <section class="pb-4 pt-4 ">
+      <div class="d-flex mb-2 align-items-center">
+        <h2>Nepalese Recipes </h2>
+        <a href="/categories/Nepalese" class="ms-auto">View More</a>
+      </div>
+      <div class="row row-cols-2 row-cols-lg-5 g-2s g-lg-3">
+        <% if(food != '') { %>
+        <% food.nepalese.forEach(function(recipe, index){ %>
+        <a href=" /recipe/<%= recipe._id %>" class="col text-center category__Link ">
+          <div class="category__img category__img--large shadow">
+            <img src="img/<%= recipe.image %>" alt="<%= recipe.name %>" loading="lazy">
+          </div>
+          <div class="pt-1"> <%= recipe.name %> </div>
+        </a>
+        <% }) %>
+        <% } else{ %>
+        <p> No Items Found </p>
+        <% } %>
+      </div>
+    </section>
+    <!-- Nepalese end-->
+    <!-- Submit-Start -->
+    <section class="px-4 py-5 my-5 text-center">
+      <img class="d-block mx-auto mb-4 img-fluid" src="/img/publish-recipe.png" alt="publish your recipe  for free Today" width="566" height="208" loading="lazy">
+      <h1 class="display-5 fw-bold">
+        publish your recipe for free Today
+      </h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4 "> Publish your recipe in front of various people. </p>
+        <div class="d-grid g-2 d-sm-flex justify-content-sm-center">
+          <a href="/submit-recipe" class="btn btn-primary btn-dark btn-lg ">Submit Recipe</a>
+        </div>
+      </div>
+    </section>
+    <!-- Submit-End -->
+  </main>
+  <section class="footer-col">
+  <footer class=" py-5">
+    <p class=" para "> © Taste Of Nepal 2023 All rights reserved.
+    </p>
+    <p class="fon">Find Us On &nbsp;<i class="fa-brands fa-square-instagram fa-beat"></i> &nbsp;<i
+      class="fa-brands fa-twitter fa-beat"></i> &nbsp;<i class="fa-brands fa-facebook fa-beat"></i> <br> Build by AA</p>
+      
+  </footer>
+
+</section>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

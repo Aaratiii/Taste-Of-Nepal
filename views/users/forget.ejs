@@ -1,0 +1,20 @@
+<section>
+
+
+    <% if (typeof message !== 'undefined') { %>
+      <h4><%= message %></h4>
+    <% } %>
+    <div class="form-box">
+      <div class="form-value">
+    <form action="/forget" method="post">
+      <div class="inputbox">
+        <input type="email" name="email" placeholder="Enter Email" required>
+    </div>
+
+    <input type="submit" value="Reset">
+
+    </form>
+  </div>
+
+    </div>
+  </section>

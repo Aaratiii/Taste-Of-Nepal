@@ -1,0 +1,102 @@
+<!-- views/about/aboutPage.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <!-- Add your stylesheets, scripts, or other dependencies here -->
+ 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <style>
+
+    .team-member {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .team-member img {
+      width: 100px; /* Adjust the width as needed */
+      height: 100px; /* Adjust the height as needed */
+      border-radius: 50%; /* Make it round */
+      margin-right: 20px; /* Adjust the margin as needed */
+    }
+
+    .team-member .info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .team-member .info h3 {
+      margin: 0;
+    }
+ 
+  </style>
+</head>
+
+<body>
+    <div class="container">
+  <h1 style="background-color: rgb(0, 0, 0); color: white; border-radius: 5px; border-width: 5px; text-align: center;"><%= title %></h1>
+  
+  <div class="container ">
+    <!-- <h2 style="background-color: rgb(57, 192, 57); color: aliceblue; border-radius: 5px; text-align: center;">HEllo</h2> -->
+    <div class="team-member">
+      <img src="/img/aarati.jpg" alt="image">
+      <div class="info">
+        <h3>Aarati Kharel</h3>
+        <h3>Bsc.CSIT Student</h3>
+        <p><a href="linkedin_profile_url_1" target="_blank">LinkedIn Profile</a></p>
+  <p>"Believe in the beauty of your dreams" </p>
+  
+      </div>
+    </div>
+
+
+        <p style="line-height: 35px;  font-size: large;">The overarching goal of this project is to intricately delve into the essence of Nepalese cuisine, meticulously
+        unraveling the profound layers of traditional recipes, nuanced cooking techniques, and the multifaceted tapestry of
+        cultural influences. Positioned at the intersection of gastronomy and cultural preservation, the undertaking is a
+        testament to the commitment to preserving and showcasing the rich culinary heritage of Nepal. Through a holistic
+        exploration of age-old recipes passed down through generations and an in-depth examination of cooking methodologies
+        unique to various regions, the project endeavors to encapsulate the very soul of Nepalese culinary traditions.</p>
+
+        <p style="line-height: 35px;  font-size: large;">In creating an immersive and educational experience, the project seeks to transcend the mere provision of recipes and
+        cooking instructions. It aspires to be a cultural odyssey, offering participants and enthusiasts an experiential journey
+        that not only tantalizes the taste buds but also fosters a profound understanding of the cultural contexts that have
+        shaped Nepalese gastronomy. By elevating the appreciation for the diverse flavors, culinary practices, and historical
+        significance embedded in Nepalese cuisine, the project emerges as a dynamic force in the ongoing preservation of the
+        country's unique cultural heritage, paving the way for cross-cultural dialogue, appreciation, and the enduring legacy of
+        culinary traditions.</p>
+</div>
+
+
+  
+
+  
+<!--Response...........-->
+
+  <div class="container">
+
+
+    <h2 style="font-size: 55px;">Contact </h2>
+
+    <form id="contactForm" action='/submitResponse' method="post">
+      <div class="mb-3">
+        <label for="name" class="form-label">Your Name</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Your Email</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+      </div>
+      <div class="mb-3">
+        <label for="message" class="form-label">Your Message</label>
+        <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+</body>
+</html>

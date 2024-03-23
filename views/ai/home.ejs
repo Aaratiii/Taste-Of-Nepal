@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f8f8f8;
+}
+
+.container {
+  text-align: center;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  height: 1200px;
+}
+
+.title {
+  margin-bottom: 20px;
+  color: #333333;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  /* width: 500px; */
+}
+
+.file-input {
+  padding: 10px;
+  border: 10px solid #c3c9c9;
+  border-radius: 25px;
+  width: 100%;
+  height: 100px;
+  width: 500px;
+  margin-right: 770px;
+  
+}
+
+.submit-btn:hover {
+  background-color: green;
+  color: #ffffff;
+
+}
+
+.submit-btn {
+  padding: 10px;
+  background-color: #70d480;
+  color: #000000;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  margin-right: 800px;
+  margin-top: -50px;
+  width: 200px;
+}
+
+.image-preview {
+  margin-top: 20px;
+  max-width: 50%;
+  max-height: 20px;
+  border: 10px solid #ffffff;
+  border-radius: 5px;
+  margin-left: -200px;
+  width: 33px;
+  height: 393px;
+}
+
+.result-container {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #c3c9c9;
+  border-radius: 25px;
+border-width: 10px;
+width: 500px;
+
+}
+
+.recipe-container {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #c3c9c9;
+  border-radius: 25px;
+  border-width: 10px;
+width: 500px;
+}
+
+.con{
+  text-align: center;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+width: 800px;
+}
+
+
+  </style>
+
+
+<script>
+
+function previewImage(input) {
+  const previewContainer = document.getElementById('image-preview');
+  previewContainer.innerHTML = ''; // Clear previous preview
+
+  const files = input.files;
+
+  if (files.length === 0) {
+    return;
+  }
+
+  const image = document.createElement('img');
+  image.src = URL.createObjectURL(files[0]);
+  image.alt = 'Image Preview';
+  image.className = 'preview-image';
+
+  previewContainer.appendChild(image);
+}
+</script>
+
+</head>
+<body>
+  
+  <div class="container">
+    <h1 class="title">Image AI</h1>
+    <h4 style="color: #333333; font-size: medium;">An image classifier for food to accurately categorize and identify various dishes based on their visual features
+    </h4><br/>
+
+    <form id="image-ai-form" class="form-container">
+      <input type="file" name="image" id="ai-form-file-input" class="file-input" accept="image/*" onchange="previewImage(this)">
+      <div id="image-preview" class="image-preview"></div>
+      <button type="submit" value="Submit" class="submit-btn">Submit</button>
+    </form>
+
+    <div id="image-ai-result" class="result-container"></div>
+    <div id="image-ai-recipeName" class="recipe-container"></div>
+  </div>
+
+</body>
+</html>
+
+
